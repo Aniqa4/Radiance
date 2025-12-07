@@ -5,8 +5,8 @@ import Popular from "~/pages/home/Popular";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav" },
-    { name: "description", content: "Get your miniature trophy!" },
+    { title: "Radiance-আভা" },
+    { name: "description", content: " Welcome to Radiance-আভা! where creativity meets craftsmanship." },
   ];
 }
 
