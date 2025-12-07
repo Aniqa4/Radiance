@@ -3,7 +3,7 @@ import type { Route } from "./+types/errorPage";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav - Page not found" },
+    { title: "Radiance-আভা - Page not found" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }

@@ -4,7 +4,7 @@ import Login from "~/pages/login/Login";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav - Login" },
+    { title: "Radiance-আভা - Login" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }

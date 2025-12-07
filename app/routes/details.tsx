@@ -5,7 +5,7 @@ import ProductDetails from "~/pages/details/ProductDetails";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav - Product details" },
+    { title: "Radiance-আভা - Product details" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }

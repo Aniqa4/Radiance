@@ -10,14 +10,15 @@ function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div>
             <p className="font-extrabold text-3xl mb-4 lg:mb-0">
-              <Link to={"/"} className="hover:underline">
-                FellasFav
+              <Link to={"/"} className="hover:underline brand-txt">
+                Radiance-আভা
               </Link>
             </p>
             <p className="text-gray-500 leading-relaxed max-w-md">
-              A small, high-quality metal trophy — perfect for gifts, party
-              favors, or desk display. Imported from China, it's a great way to
-              celebrate achievements in a unique and meaningful way.
+              Welcome to Radiance-আভা! where creativity meets craftsmanship. We
+              create unique & customizable clocks, wall hangings, home decor
+              pieces, jewelry, trays, and more, all carefully handmade with
+              premium materials,love, creativity and a touch of shine.
             </p>
           </div>
 
@@ -26,7 +27,7 @@ function Footer() {
               <p className="font-medium text-xl mb-4">Contact us</p>
               <div className="flex gap-6 text-gray-600">
                 <a
-                  href="https://www.facebook.com/FellasFavBD"
+                  href="https://www.facebook.com/radianceAva"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
@@ -34,7 +35,7 @@ function Footer() {
                 >
                   <FaFacebook size={26} />
                 </a>
-                <a
+                {/* <a
                   href="https://www.instagram.com/fellas.fav"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -42,14 +43,14 @@ function Footer() {
                   className="hover:text-pink-600 transition"
                 >
                   <AiFillInstagram size={28} />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
         </div>
 
         <p className="text-center text-gray-500 mt-10 text-sm">
-          © {new Date().getFullYear()} FellasFav. All rights reserved.
+          © {new Date().getFullYear()} Radiance-আভা. All rights reserved.
         </p>
       </div>
     </footer>

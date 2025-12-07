@@ -4,7 +4,7 @@ import Register from "~/pages/register/Register";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav - Register" },
+    { title: "Radiance-আভা - Register" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }

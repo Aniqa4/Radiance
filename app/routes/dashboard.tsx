@@ -4,7 +4,7 @@ import UserDashboard from "~/pages/dashboard/UserDashboard";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav - Dashboard" },
+    { title: "Radiance-আভা - Dashboard" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }

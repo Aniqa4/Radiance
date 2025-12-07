@@ -5,7 +5,7 @@ import Categories from "~/pages/categories/Categories";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav - Category" },
+    { title: "Radiance-আভা - Category" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }
@@ -14,7 +14,7 @@ function categories() {
   const { id, categoryName } = useParams();
   return (
     <Layout>
-      <Categories categoryID={Number(id)} categoryName={categoryName}/>
+      <Categories categoryID={Number(id)} categoryName={categoryName} />
     </Layout>
   );
 }

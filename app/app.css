@@ -1,2 +1,11 @@
 @import "tailwindcss";
 
+.brand-bg{
+    background: #E0BFB8;
+}
+
+.brand-txt{
+    color: #E0BFB8;
+}
+
+

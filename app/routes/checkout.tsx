@@ -4,7 +4,7 @@ import Checkout from "~/pages/checkout/Checkout";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "FellasFav - Checkout" },
+    { title: "Radiance-আভা - Checkout" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }
