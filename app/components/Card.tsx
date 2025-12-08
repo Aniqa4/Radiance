@@ -48,9 +48,9 @@ function Card({ productID, name, price, imageUrl, quantity }: CardProps) {
           )}
         </div>
 
-        <div className="py-3 flex items-center justify-between">
+        <div className="py-3 grid gap-5">
           <p className="font-medium text-lg">{name}</p>
-          <p>৳ {price}</p>
+          <p>Price: {price} BDT</p>
         </div>
 
         {quantity > 0 ? (

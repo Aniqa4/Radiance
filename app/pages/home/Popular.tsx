@@ -6,32 +6,29 @@ function Popular() {
     <div>
       <Title title="Popular" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-        <Card
+         <Card
           productID={1}
-          name="Golden Ball"
-          price={320}
-          imageUrl="/goldenBall.png"
+          name="Beach-Themed Resin Decor Piece"
+          price={1000}
+          imageUrl="/beach.jpg"
           quantity={10}
-        />
-        <Card
+        /> <Card
           productID={1}
-          name="Golden Ball"
-          price={320}
-          imageUrl="/goldenBall.png"
+          name="Beach-Themed Resin Decor Piece"
+          price={1000}
+          imageUrl="/beach.jpg"
           quantity={10}
-        />
-        <Card
+        /> <Card
           productID={1}
-          name="Golden Ball"
-          price={320}
-          imageUrl="/goldenBall.png"
+          name="Beach-Themed Resin Decor Piece"
+          price={1000}
+          imageUrl="/beach.jpg"
           quantity={10}
-        />
-        <Card
+        /> <Card
           productID={1}
-          name="Golden Ball"
-          price={320}
-          imageUrl="/goldenBall.png"
+          name="Beach-Themed Resin Decor Piece"
+          price={1000}
+          imageUrl="/beach.jpg"
           quantity={10}
         />
       </div>

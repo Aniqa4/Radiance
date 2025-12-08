@@ -3,14 +3,15 @@ import useCountCartItems from "~/store/cart/countCartItems";
 
 const product = {
   productID: 1,
-  name: "Classic Leather Sneakers",
-  price: 79.99,
+  name: "Beach-Themed Resin Decor Piece",
+  price: 1000,
   rating: 4.3,
   reviewCount: 38,
   imageUrl:
     "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
-  description:
-    "These classic leather sneakers combine timeless style with ultimate comfort. Perfect for everyday wear and any occasion.",
+  description: `Bring a touch of the ocean into your space with this handcrafted piece featuring a beautiful beach-themed resin design on the top surface. Each item is individually poured, layered, and finished to create a smooth, glass-like finish with realistic wave textures and coastal colors. No two pieces are ever the same, making your item completely unique.
+
+Crafted with high-quality resin, pigments, and fine details, this piece is both decorative and functional. It adds a calm, coastal aesthetic to any room and makes a thoughtful gift for anyone who loves the sea, beach décor, or handmade art.`,
   reviews: [
     {
       id: 1,
@@ -64,7 +65,7 @@ function ProductDetails() {
         {/* Image */}
         <div className="md:w-1/2">
           <img
-            src={"/goldenBall.png"}
+            src={"/beach.jpg"}
             alt={product.name}
             className="rounded-lg w-full "
           />
@@ -75,18 +76,18 @@ function ProductDetails() {
           <div>
             <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
             <p className="text-xl text-green-600 font-semibold mb-4">
-              ${product.price.toFixed(2)}
+              {product.price.toFixed(2)} BDT
             </p>
 
             {/* Rating */}
-            <div className="flex items-center mb-6">
+           {/*  <div className="flex items-center mb-6">
               {[1, 2, 3, 4, 5].map((i) => (
                 <Star key={i} filled={i <= Math.floor(product.rating)} />
               ))}
               <span className="ml-3 text-gray-600">
                 {product.rating} ({product.reviewCount} reviews)
               </span>
-            </div>
+            </div> */}
 
             {/* Description */}
             <p className="text-gray-700 leading-relaxed">
@@ -131,7 +132,7 @@ function ProductDetails() {
       </div>
 
       {/* Reviews */}
-      <div className="mt-12">
+     {/*  <div className="mt-12">
         <h2 className="text-2xl font-semibold mb-6">Customer Reviews</h2>
         {product.reviews.length === 0 ? (
           <p className="text-gray-500 italic">No reviews yet.</p>
@@ -155,7 +156,7 @@ function ProductDetails() {
             ))}
           </ul>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
