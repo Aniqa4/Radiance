@@ -12,7 +12,7 @@ function AllProducts() {
   useEffect(() => {
     const fetchPopular = async () => {
       try {
-        const response = await axiosInstance.get("/best-selling");
+        const response = await axiosInstance.get("/products");
         setProducts(response.data || []);
       } catch (err) {
         setError("Failed to load popular products.");
