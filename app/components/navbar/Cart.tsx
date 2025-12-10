@@ -69,7 +69,7 @@ function Cart() {
                   {/* Image */}
                   <Link to={`/details/${item.productID}`} onClick={closeCart}>
                     <img
-                      src={'/beach.jpg'}
+                      src={item.imageUrl}
                       alt={item.name}
                       className="w-14 h-14 rounded object-cover flex-shrink-0"
                     />

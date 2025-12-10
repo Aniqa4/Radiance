@@ -45,7 +45,7 @@ function Checkout() {
                   className="flex items-center py-4 lg:p-4 last:border-none"
                 >
                   <img
-                    src={'/beach.jpg'}
+                    src={item.imageUrl}
                     alt={item.name}
                     className="w-16 h-16 object-cover rounded mr-4 flex-shrink-0"
                   />

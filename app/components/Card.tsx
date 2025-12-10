@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import useCountCartItems from "~/store/cart/countCartItems";
 
 interface CardProps {
-  productID: number;
+  productID: string;
   name: string;
   price: number;
   imageUrl: string;

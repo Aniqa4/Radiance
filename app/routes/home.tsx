@@ -19,8 +19,8 @@ export default function Home() {
   return (
     <Layout>
       <Banner />
-      <Popular />
       <Featured />
+      <Popular />
     </Layout>
   );
 }
