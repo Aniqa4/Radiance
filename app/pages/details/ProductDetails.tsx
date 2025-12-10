@@ -92,8 +92,9 @@ function ProductDetails({ id }: { id: string }) {
             </div> */}
 
             {/* Description */}
-            <p className="text-gray-700 leading-relaxed">
-              Description: {product?.description}
+            <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+              Description: <br />
+              {product?.description}
             </p>
           </div>
 
