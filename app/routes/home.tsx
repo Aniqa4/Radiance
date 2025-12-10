@@ -3,6 +3,7 @@ import type { Route } from "./+types/home";
 import Layout from "~/layout/Layout";
 import Popular from "~/pages/home/Popular";
 import Banner from "~/pages/home/Banner";
+import AllProducts from "~/pages/home/AllProducts";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -21,6 +22,7 @@ export default function Home() {
       <Banner />
       <Featured />
       <Popular />
+      <AllProducts />
     </Layout>
   );
 }

@@ -8,9 +8,19 @@ interface CardProps {
   price: number;
   imageUrl: string;
   quantity: number;
+  discountedPrice: number | null;
+  finalPrice: number;
 }
 
-function Card({ productID, name, price, imageUrl, quantity }: CardProps) {
+function Card({
+  productID,
+  name,
+  price,
+  discountedPrice,
+  finalPrice,
+  imageUrl,
+  quantity,
+}: CardProps) {
   const [showText, setShowText] = useState(false);
   const { addItem } = useCountCartItems();
 
@@ -50,7 +60,13 @@ function Card({ productID, name, price, imageUrl, quantity }: CardProps) {
 
         <div className="py-3 grid gap-5">
           <p className="font-medium text-lg">{name}</p>
-          <p>Price: {price} BDT</p>
+          <p>
+            Price:
+            {discountedPrice && (
+              <span className=" line-through text-gray-600"> {price} BDT</span>
+            )}{" "}
+            {finalPrice} BDT
+          </p>
         </div>
 
         {quantity > 0 ? (

@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
 import Card from "~/components/Card";
 import Title from "~/components/Title";
+import type { ProductProps } from "~/interface/ProductProps";
 import axiosInstance from "~/utilities/axiosInstance";
 
-interface Product {
-  _id: string;
-  productName: string;
-  productImage: string;
-  price: number;
-  availableCopies: number;
-}
-
 function Popular() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -50,6 +43,8 @@ function Popular() {
               productID={product._id}
               name={product.productName}
               price={product.price}
+              discountedPrice={product.discountedPrice}
+              finalPrice={product.finalPrice}
               imageUrl={product.productImage}
               quantity={product.availableCopies}
             />

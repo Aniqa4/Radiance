@@ -4,40 +4,36 @@ import Title from "~/components/Title";
 import type { ProductProps } from "~/interface/ProductProps";
 import axiosInstance from "~/utilities/axiosInstance";
 
-function Featured() {
+function AllProducts() {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchFeaturedProducts = async () => {
+    const fetchPopular = async () => {
       try {
-        const response = await axiosInstance.get("/featured-products");
+        const response = await axiosInstance.get("/best-selling");
         setProducts(response.data || []);
       } catch (err) {
-        setError("Failed to load featured products.");
-        console.error("Featured API Error:", err);
+        setError("Failed to load popular products.");
+        console.error("Popular API Error:", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchFeaturedProducts();
+    fetchPopular();
   }, []);
-
-  // Hide entire section if:
-  // not loading, no error, and no products found
-  if (!loading && !error && products.length === 0) {
-    return null;
-  }
 
   return (
     <div>
-      <Title title="Featured" />
+      <Title title="All Products" />
 
       {loading && <p className="text-gray-600">Loading...</p>}
 
-      {!loading && error && <p className="text-red-500">{error}</p>}
+      {!loading && error && (
+        <p className="text-red-500">{error}</p>
+      )}
 
       {!loading && !error && products.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
@@ -55,8 +51,12 @@ function Featured() {
           ))}
         </div>
       )}
+
+      {
+        products.length===0 && <p>No products to show.</p>
+      }
     </div>
   );
 }
 
-export default Featured;
+export default AllProducts;
