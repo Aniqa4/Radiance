@@ -9,5 +9,7 @@ export default [
   route("register", "routes/register.tsx"),
   route("checkout", "routes/checkout.tsx"),
   route("categories/:id/:categoryName", "routes/categories.tsx"),
+  route("custom-order", "routes/customOrder.tsx"),
+  route("gift-guide", "routes/giftGuide.tsx"),
 
 ] satisfies RouteConfig;

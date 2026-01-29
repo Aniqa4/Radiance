@@ -19,6 +19,22 @@ function Navbar() {
         <p className="font-extrabold text-3xl">
           <Link to={"/"}>Radiance-আভা</Link>
         </p>
+        <div>
+          <ul className="flex gap-8">
+            <li>
+              <Link to={"/custom-order"} className="hover:underline">
+                {" "}
+                Custom Order
+              </Link>
+            </li>
+            <li>
+              <Link to={"/gift-guide"} className="hover:underline">
+                {" "}
+                Gift Guide
+              </Link>
+            </li>
+          </ul>
+        </div>
         <div className="flex gap-5">
           <div onClick={toggleCart} className="relative cursor-pointer">
             <IoBagHandleSharp size={24} />

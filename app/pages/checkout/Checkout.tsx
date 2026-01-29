@@ -11,7 +11,7 @@ function Checkout() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -22,14 +22,12 @@ function Checkout() {
 
   const total = cartList.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
 
   return (
     <div className=" lg:p-6 lg:bg-gray-50 lg:mt-5">
-      <h1 className="text-2xl font-semibold mb-8 text-center">
-        Checkout
-      </h1>
+      <h1 className="text-2xl font-semibold mb-8 text-center">Checkout</h1>
 
       <div className="flex flex-col md:flex-row gap-10 flex-grow  mx-auto w-full">
         {/* Products List */}
@@ -69,7 +67,7 @@ function Checkout() {
         </section>
 
         {/* User Info Form */}
-        <section className="md:w-1/2 bg-white rounded-md lg:shadow lg:p-6 flex flex-col">
+        {/*  <section className="md:w-1/2 bg-white rounded-md lg:shadow lg:p-6 flex flex-col">
           <h2 className="text-xl font-semibold mb-4">Your Information</h2>
           <form
             onSubmit={(e) => {
@@ -145,7 +143,20 @@ function Checkout() {
               Place Order
             </button>
           </form>
-        </section>
+        </section> */}
+        <div className=" flex items-center mx-auto">
+          <div className="text-center space-y-6">
+            <p>To place an order, please inbox us on Facebook</p>
+            <a
+              href="https://www.facebook.com/radianceAva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-black text-white rounded-full text-sm hover:bg-gray-800 transition"
+            >
+              Click to Inbox Us on Facebook
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
