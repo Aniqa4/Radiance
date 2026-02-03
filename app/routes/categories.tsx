@@ -14,7 +14,7 @@ function categories() {
   const { id, categoryName } = useParams();
   return (
     <Layout>
-      <Categories categoryID={Number(id)} categoryName={categoryName} />
+      <Categories categoryID={id} categoryName={categoryName} />
     </Layout>
   );
 }

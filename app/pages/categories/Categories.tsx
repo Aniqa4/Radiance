@@ -1,126 +1,118 @@
-import React, { useState, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Card from "~/components/Card";
-const allProducts = [
-  {
-    productID: 1,
-    categoryID: 1,
-    name: "Leather Jacket",
-    price: 150,
-    quantity: 5,
-    dateAdded: "2025-07-15",
-    categoryName: "Miniature Trophy",
-  },
-  {
-    productID: 2,
-    categoryID: 2,
-    name: "Running Shoes",
-    price: 90,
-    quantity: 0,
-    dateAdded: "2025-06-01",
-    categoryName: "Miniature Trophy",
-  },
-  {
-    productID: 3,
-    categoryID: 3,
-    name: "Baseball Cap",
-    price: 25,
-    quantity: 10,
-    dateAdded: "2025-08-05",
-    categoryName: "Miniature Trophy",
-  },
-  {
-    productID: 4,
-    categoryID: 4,
-    name: "Jeans",
-    price: 70,
-    quantity: 3,
-    dateAdded: "2025-08-01",
-    categoryName: "Miniature Trophy",
-  },
-  {
-    productID: 5,
-    categoryID: 5,
-    name: "Sneakers",
-    price: 85,
-    quantity: 2,
-    dateAdded: "2025-07-30",
-    categoryName: "Miniature Trophy",
-  },
-];
+import type { ProductProps } from "~/interface/ProductProps";
+import axiosInstance from "~/utilities/axiosInstance";
 
 export default function Categories({
   categoryID,
   categoryName,
 }: {
-  categoryID: number | undefined;
+  categoryID: string | undefined;
   categoryName: string | undefined;
 }) {
+  const [products, setProducts] = useState<ProductProps[]>([]);
   const [filter, setFilter] = useState("default");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
+
+  /* ================= Fetch products ================= */
+  useEffect(() => {
+    if (!categoryID) return;
+
+    const fetchProducts = async () => {
+      try {
+        const response = await axiosInstance.get(
+          `/products-by-category/${categoryID}`,
+        );
+        console.log("data:", response.data);
+
+        setProducts(Array.isArray(response.data) ? response.data : []);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+        setError("Failed to load products");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [categoryID]);
+
+  /* ================= Filters ================= */
   const filteredProducts = useMemo(() => {
-    let products = allProducts.filter((p) => p.categoryID === categoryID);
+    let result = [...products];
 
     switch (filter) {
       case "price-low":
-        products = [...products].sort((a, b) => a.price - b.price);
+        result.sort((a, b) => a.price - b.price);
         break;
+
       case "price-high":
-        products = [...products].sort((a, b) => b.price - a.price);
+        result.sort((a, b) => b.price - a.price);
         break;
+
       case "in-stock":
-        products = products.filter((p) => p.quantity > 0);
+        result = result.filter((p) => p.availableCopies > 0);
         break;
+
       case "default":
       default:
-        // no sorting or filtering, show all
         break;
     }
 
-    return products;
-  }, [filter, categoryID]);
+    return result;
+  }, [filter, products]);
 
+  /* ================= UI ================= */
   return (
     <div>
-      {/* Title and Filter Dropdown */}
+      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-5 mb-8 gap-4">
-        <h1 className="text-3xl font-bold">{categoryName}</h1>
-        <div>
-          <label htmlFor="filter" className="sr-only">
-            Filter Products
-          </label>
-          <select
-            id="filter"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="default">Default</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="in-stock">In Stock</option>
-          </select>
-        </div>
+        <h1 className="text-3xl font-bold">{categoryName || "Products"}</h1>
+
+        <select
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+          className="border border-gray-300 rounded-lg px-3 py-2 text-sm
+                     focus:outline-none focus:ring-2 focus:ring-black"
+        >
+          <option value="default">Default</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="in-stock">In Stock</option>
+        </select>
       </div>
 
-      {/* Product Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
-        {filteredProducts.length === 0 ? (
-          <p className="text-gray-500 col-span-full text-center mt-20 italic">
-            No products available.
-          </p>
-        ) : (
-          filteredProducts.map((product) => (
-            <Card
-              key={product.productID}
-              productID={product.productID}
-              name={product.name}
-              price={product.price}
-              quantity={product.quantity}
-              imageUrl="/goldenBall.png"
-            />
-          ))
-        )}
-      </div>
+      {/* States */}
+      {loading && (
+        <p className="text-center text-gray-500 mt-20">Loading products…</p>
+      )}
+
+      {error && <p className="text-center text-red-500 mt-20">{error}</p>}
+
+      {!loading && !error && (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {filteredProducts.length === 0 ? (
+            <p className="text-gray-500 col-span-full text-center mt-20 italic">
+              No products available.
+            </p>
+          ) : (
+            filteredProducts.map((product) => (
+              <Card
+                key={product.id}
+                productID={product.id}
+                name={product.productName}
+                price={product.price}
+                quantity={product.availableCopies}
+                imageUrl={product.productImage || ""}
+                discountedPrice={product.discountedPrice}
+                finalPrice={product.finalPrice}
+              />
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 }
