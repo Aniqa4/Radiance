@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "~/layout/Layout";
 
-function giftGuide() {
+function GiftGuide() {
   return (
     <Layout>
       {/* Header */}
@@ -9,10 +9,11 @@ function giftGuide() {
         Gift Guide
       </h1>
       <p className="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-        Looking for a meaningful gift? Our handcrafted resin and candle
-        creations are designed to celebrate love, milestones, and special
-        moments— beautifully and timelessly.
+        Looking for a meaningful gift? Our handcrafted resin and candle creations
+        are designed to celebrate love, milestones, and special moments—
+        beautifully and timelessly.
       </p>
+
       {/* Gift by Occasion */}
       <section className="mb-14">
         <h2 className="text-2xl font-semibold mb-6">Gift by Occasion</h2>
@@ -21,53 +22,62 @@ function giftGuide() {
           {/* Valentine's Day */}
           <div>
             <h3 className="text-xl font-medium mb-2">Valentine’s Day</h3>
-            <p className="text-gray-700">
-              Romantic resin jewelry, scented candle bouquets & preserved flower
-              gift sets.
-            </p>
+            <ul className="list-disc list-inside text-gray-700 space-y-1">
+              <li>Romantic resin jewelry</li>
+              <li>Scented candle bouquets</li>
+              <li>Preserved flower gift sets</li>
+            </ul>
           </div>
 
           {/* Wedding Package */}
           <div>
             <h3 className="text-xl font-medium mb-2">Wedding Package</h3>
-            <p className="text-gray-700">
-              Elegant engagement tray, decorative mirror, personalized Nikah
-              Nama (name plate), wedding pen, preserved wedding garland, and
-              beautiful candle keepsakes to gift your guests as return wedding
-              gifts.
-            </p>
+            <ul className="list-disc list-inside text-gray-700 space-y-1">
+              <li>Elegant engagement tray</li>
+              <li>Decorative mirror</li>
+              <li>Personalized Nikah Nama (name plate)</li>
+              <li>Wedding pen</li>
+              <li>Preserved wedding garland</li>
+              <li>Candle keepsakes for return wedding gifts</li>
+            </ul>
           </div>
 
           {/* Anniversary */}
           <div>
             <h3 className="text-xl font-medium mb-2">Anniversary Package</h3>
-            <p className="text-gray-700">
-              Custom resin clocks, custom photo frames featuring your couple’s
-              picture, personalized anniversary date pieces & scented candle
-              bouquets.
-            </p>
+            <ul className="list-disc list-inside text-gray-700 space-y-1">
+              <li>Custom resin clocks</li>
+              <li>Personalized photo frames with couple’s picture</li>
+              <li>Anniversary date resin pieces</li>
+              <li>Scented candle bouquets</li>
+            </ul>
           </div>
 
           {/* Birthday */}
           <div>
             <h3 className="text-xl font-medium mb-2">Birthday</h3>
-            <p className="text-gray-700">
-              Scented candles as return gifts for birthday parties, personalized
-              décor, personalized photo frames & scented candle bouquets.
-            </p>
+            <ul className="list-disc list-inside text-gray-700 space-y-1">
+              <li>Scented candles as return gifts</li>
+              <li>Personalized décor items</li>
+              <li>Personalized photo frames</li>
+              <li>Scented candle bouquets</li>
+            </ul>
           </div>
 
           {/* Home & Office */}
           <div>
             <h3 className="text-xl font-medium mb-2">Home & Office</h3>
-            <p className="text-gray-700">
-              Artistic wall décor and premium resin clocks to elevate homes and
-              corporate offices. Also perfect as farewell gifts and thoughtful
-              candle gifts for office or corporate events.
-            </p>
+            <ul className="list-disc list-inside text-gray-700 space-y-1">
+              <li>Artistic wall décor</li>
+              <li>Premium resin clocks</li>
+              <li>Corporate & office gifting</li>
+              <li>Farewell gifts</li>
+              <li>Candle gifts for office or corporate events</li>
+            </ul>
           </div>
         </div>
       </section>
+
       {/* Newborn Memory */}
       <section className="mb-14">
         <h2 className="text-2xl font-semibold mb-4">
@@ -100,16 +110,17 @@ function giftGuide() {
               — hair must be clean, dry, and oil-free
             </span>
           </li>
-          <li>Pregnancy test kit (used & fully dried)</li>
+          <li>Used pregnancy test kit (fully dried)</li>
           <li>Baby’s birth details (name, date, time, height & weight)</li>
           <li>Hospital bands, tags, or written notes</li>
-          <li>Any small personal item approved after consultation</li>
+          <li>Any small personal item (after consultation)</li>
         </ul>
 
         <p className="mt-4 text-sm text-gray-500 italic">
           Items not listed may be accepted after prior discussion.
         </p>
       </section>
+
       {/* CTA */}
       <div className="text-center border-t pt-8">
         <p className="text-lg font-medium mb-2">Preserve love. Gift art.</p>
@@ -130,4 +141,4 @@ function giftGuide() {
   );
 }
 
-export default giftGuide;
+export default GiftGuide;
