@@ -1,30 +1,44 @@
+interface ProductSize {
+  label: string;
+  inStock: boolean;
+}
+
+interface ProductVariant {
+  label: string;
+  image: string;
+  hasSizes: boolean;
+  sizes: ProductSize[];
+  inStock: boolean;
+}
+
 export interface ProductProps {
-  id: string;
   _id: string;
 
   productName: string;
-  productImage: string;
+  productImage: string[];
 
   price: number;
   discountedPrice: number;
   finalPrice: number;
 
+  inStock: boolean;
+
   categoryName: string;
   categoryID: string;
 
-  subCategoryName: string | null;
-  subCategoryID: string | null;
+  subCategoryName: string;
+  subCategoryID: string;
 
-  subSubCategoryName: string | null;
-  subSubCategoryID: string | null;
+  subSubCategoryName: string;
+  subSubCategoryID: string;
 
-  availableCopies: number;
-  soldCopies: number;
-
+  
   description: string;
 
   featured: boolean;
 
+  hasVariants: boolean;
+  variants: ProductVariant[];
+
   createdAt: string;
-  updatedAt: string;
 }

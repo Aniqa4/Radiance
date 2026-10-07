@@ -4,6 +4,7 @@ import Layout from "~/layout/Layout";
 import Popular from "~/pages/home/Popular";
 import Banner from "~/pages/home/Banner";
 import AllProducts from "~/pages/home/AllProducts";
+import CategoryShowcase from "~/pages/home/CategoryShowcase";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <Layout>
       <Banner />
+      <CategoryShowcase />
       <Featured />
       <Popular />
       <AllProducts />

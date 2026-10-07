@@ -25,9 +25,9 @@ export default function Categories({
         const response = await axiosInstance.get(
           `/products-by-category/${categoryID}`,
         );
-        console.log("data:", response.data);
+        console.log("data:", response.data.products);
 
-        setProducts(Array.isArray(response.data) ? response.data : []);
+        setProducts(Array.isArray(response.data.products) ? response.data.products : []);
       } catch (err) {
         console.error("Error fetching products:", err);
         setError("Failed to load products");
@@ -53,7 +53,7 @@ export default function Categories({
         break;
 
       case "in-stock":
-        result = result.filter((p) => p.availableCopies > 0);
+        result = result.filter((p) => p.inStock);
         break;
 
       case "default":
@@ -100,14 +100,16 @@ export default function Categories({
           ) : (
             filteredProducts.map((product) => (
               <Card
-                key={product.id}
-                productID={product.id}
+                key={product._id}
+                productID={product._id}
                 name={product.productName}
                 price={product.price}
-                quantity={product.availableCopies}
-                imageUrl={product.productImage || ""}
+                inStock={product.inStock}
+                imageUrl={product.productImage[0] || ""}
                 discountedPrice={product.discountedPrice}
                 finalPrice={product.finalPrice}
+                hasVariants={product.hasVariants}
+                variants={product.variants}
               />
             ))
           )}

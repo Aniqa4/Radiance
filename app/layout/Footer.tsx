@@ -9,16 +9,16 @@ function Footer() {
       <div className="max-w-[1280px] mx-auto px-5 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           <div>
-            <p className="font-extrabold text-3xl mb-4 lg:mb-0">
-              <Link to={"/"} className="hover:underline brand-txt">
+            <Link
+              to="/"
+              className="group flex items-center transition-all duration-300"
+            >
+              <h1 className="text-3xl brand-txt font-extrabold tracking-tight">
                 Radiance-আভা
-              </Link>
-            </p>
+              </h1>
+            </Link>
             <p className="text-gray-500 leading-relaxed max-w-md">
-              Welcome to Radiance-আভা! where creativity meets craftsmanship. We
-              create unique & customizable clocks, wall hangings, home decor
-              pieces, jewelry, trays, and more, all carefully handmade with
-              premium materials,love, creativity and a touch of shine.
+              Welcome to Radiance-আভা !
             </p>
           </div>
 
@@ -35,22 +35,22 @@ function Footer() {
                 >
                   <FaFacebook size={26} />
                 </a>
-                {/* <a
-                  href="https://www.instagram.com/fellas.fav"
+                <a
+                  href="https://www.instagram.com/radiance.ava.bd"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
                   className="hover:text-pink-600 transition"
                 >
                   <AiFillInstagram size={28} />
-                </a> */}
+                </a>
               </div>
             </div>
           </div>
         </div>
 
         <p className="text-center text-gray-500 mt-10 text-sm">
-          © {new Date().getFullYear()} Radiance-আভা. All rights reserved.
+          © {new Date().getFullYear()} Radiance-আভা . All rights reserved.
         </p>
       </div>
     </footer>

@@ -5,7 +5,7 @@ import Categories from "~/pages/categories/Categories";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Radiance-আভা - Category" },
+    { title: "Radiance-আভা  - Category" },
     { name: "description", content: "Get your miniature trophy!" },
   ];
 }
