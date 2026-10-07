@@ -88,7 +88,7 @@ function Navbar() {
           to="/"
           className="group flex items-center transition-all duration-300"
         >
-          <h1 className="text-3xl font-extrabold tracking-tight">
+          <h1 className="md:text-3xl font-extrabold tracking-tight">
             Radiance-আভা 
           </h1>
         </Link>

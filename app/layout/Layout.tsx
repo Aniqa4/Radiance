@@ -43,7 +43,7 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
       </div>
 
       {/* Page Content with top padding so it’s not hidden behind navbar */}
-      <div className="pt-[112px] max-w-[1280px] px-5 lg:px-10 mx-auto mb-10 lg:mb-20">
+      <div className="pt-[152px] md:pt-[112px] max-w-[1280px] px-5 lg:px-10 mx-auto mb-10 lg:mb-20">
         {children}
       </div>
 

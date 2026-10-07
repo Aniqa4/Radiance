@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import useCategoryStore from "~/store/getCategories/useCategoryStore";
 
 function SubNavbar() {
-  const { categories, fetchCategories, loading } = useCategoryStore();
+  const { categories, fetchCategories } = useCategoryStore();
   const [openMenu, setOpenMenu] = useState(false);
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
   const [expandedSub, setExpandedSub] = useState<string | null>(null);
@@ -13,16 +13,6 @@ function SubNavbar() {
     if (!categories.length) fetchCategories();
   }, [fetchCategories, categories.length]);
 
-  if (loading) {
-    return (
-      <div className="bg-white border-b border-gray-100 px-5 lg:px-10 h-11 flex items-center gap-4">
-        {[80, 60, 90, 70, 65].map((w) => (
-          <div key={w} className="h-3 rounded-full bg-gray-100 animate-pulse" style={{ width: w }} />
-        ))}
-      </div>
-    );
-  }
-
   return (
     <nav className="bg-white border-b border-gray-100">
       <div className="max-w-[1280px] mx-auto px-5 lg:px-10">
@@ -30,10 +20,22 @@ function SubNavbar() {
         {/* ── Desktop ── */}
         <div className="hidden md:flex items-center gap-1 h-11">
           <Link
+            to="/custom-order"
+            className="flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition whitespace-nowrap"
+          >
+            Custom Order
+          </Link>
+          <Link
+            to="/gift-guide"
+            className="flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition whitespace-nowrap"
+          >
+            Gift Guide
+          </Link>
+          <Link
             to="/categories"
             className="flex items-center px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition whitespace-nowrap"
           >
-            All
+            All Categories
           </Link>
           <div className="w-px h-4 mx-1" />
           {categories.map((category) => (
@@ -80,15 +82,31 @@ function SubNavbar() {
                         )}
                       </div>
                     ))}
+
                   </div>
                 </div>
               )}
             </div>
           ))}
+          <div className="w-px h-4 mx-1" />
         </div>
 
         {/* ── Mobile ── */}
         <div className="md:hidden">
+          <div className="flex gap-2 border-b border-gray-100 py-2">
+            <Link
+              to="/custom-order"
+              className="flex-1 rounded-lg bg-gray-50 px-3 py-1.5 text-center text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+            >
+              Custom Order
+            </Link>
+            <Link
+              to="/gift-guide"
+              className="flex-1 rounded-lg bg-gray-50 px-3 py-1.5 text-center text-sm font-medium text-gray-700 hover:bg-gray-100 transition"
+            >
+              Gift Guide
+            </Link>
+          </div>
           <div className="flex items-center justify-between py-3">
             <button
               onClick={() => setOpenMenu((o) => !o)}
@@ -104,7 +122,6 @@ function SubNavbar() {
               View all
             </Link>
           </div>
-
           {openMenu && (
             <div className="pb-3 space-y-0.5">
               {categories.map((category) => (
