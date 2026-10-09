@@ -1,43 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "~/components/Card";
 import Title from "~/components/Title";
-import type { ProductProps } from "~/interface/ProductProps";
-import axiosInstance from "~/utilities/axiosInstance";
+import { ProductGridSkeleton } from "~/components/CardSkeleton";
+import useHomeStore from "~/store/home/useHomeStore";
 
 function AllProducts() {
-  const [products, setProducts] = useState<ProductProps[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const {
+    allProducts,
+    allProductsLoading,
+    allProductsError,
+    fetchAllProducts,
+  } = useHomeStore();
 
   useEffect(() => {
-    const fetchPopular = async () => {
-      try {
-        const response = await axiosInstance.get("/products");
-        setProducts(response.data || []);
-      } catch (err) {
-        setError("Failed to load popular products.");
-        console.error("Popular API Error:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchAllProducts();
+  }, [fetchAllProducts]);
 
-    fetchPopular();
-  }, []);
+  if (!allProductsLoading && allProducts.length === 0) return null;
 
   return (
     <div>
       <Title title="All Products" />
 
-      {loading && <p className="text-gray-600">Loading...</p>}
+      {allProductsLoading && <ProductGridSkeleton count={8} />}
 
-      {!loading && error && (
-        <p className="text-red-500">{error}</p>
+      {!allProductsLoading && allProductsError && (
+        <p className="text-red-500">{allProductsError}</p>
       )}
 
-      {!loading && !error && products.length > 0 && (
+      {!allProductsLoading && !allProductsError && allProducts.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {products.map((product) => (
+          {allProducts.map((product) => (
             <Card
               key={product._id}
               productID={product._id}
@@ -45,16 +38,15 @@ function AllProducts() {
               price={product.price}
               discountedPrice={product.discountedPrice}
               finalPrice={product.finalPrice}
-              imageUrl={product.productImage}
-              quantity={product.availableCopies}
+              imageUrl={product.productImage[0]}
+              inStock={product.inStock}
+              hasVariants={product.hasVariants}
+              variants={product.variants}
             />
           ))}
         </div>
       )}
 
-      {
-        products.length===0 && <p>No products to show.</p>
-      }
     </div>
   );
 }

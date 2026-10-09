@@ -1,33 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Card from "~/components/Card";
 import Title from "~/components/Title";
-import type { ProductProps } from "~/interface/ProductProps";
-import axiosInstance from "~/utilities/axiosInstance";
+import { ProductGridSkeleton } from "~/components/CardSkeleton";
+import useHomeStore from "~/store/home/useHomeStore";
 
 function Featured() {
-  const [products, setProducts] = useState<ProductProps[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { featuredProducts, featuredLoading, featuredError, fetchFeatured } =
+    useHomeStore();
 
   useEffect(() => {
-    const fetchFeaturedProducts = async () => {
-      try {
-        const response = await axiosInstance.get("/featured-products");
-        setProducts(response.data || []);
-      } catch (err) {
-        setError("Failed to load featured products.");
-        console.error("Featured API Error:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchFeatured();
+  }, [fetchFeatured]);
 
-    fetchFeaturedProducts();
-  }, []);
-
-  // Hide entire section if:
-  // not loading, no error, and no products found
-  if (!loading && !error && products.length === 0) {
+  if (!featuredLoading && !featuredError && featuredProducts.length === 0) {
     return null;
   }
 
@@ -35,13 +20,15 @@ function Featured() {
     <div>
       <Title title="Featured" />
 
-      {loading && <p className="text-gray-600">Loading...</p>}
+      {featuredLoading && <ProductGridSkeleton count={4} />}
 
-      {!loading && error && <p className="text-red-500">{error}</p>}
+      {!featuredLoading && featuredError && (
+        <p className="text-red-500">{featuredError}</p>
+      )}
 
-      {!loading && !error && products.length > 0 && (
+      {!featuredLoading && !featuredError && featuredProducts.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {products.map((product) => (
+          {featuredProducts.map((product) => (
             <Card
               key={product._id}
               productID={product._id}
@@ -49,8 +36,10 @@ function Featured() {
               price={product.price}
               discountedPrice={product.discountedPrice}
               finalPrice={product.finalPrice}
-              imageUrl={product.productImage}
-              quantity={product.availableCopies}
+              imageUrl={product.productImage[0]}
+              inStock={product.inStock}
+              hasVariants={product.hasVariants}
+              variants={product.variants}
             />
           ))}
         </div>
